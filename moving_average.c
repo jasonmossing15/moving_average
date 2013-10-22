@@ -5,7 +5,7 @@
  *      Author: C15Jason.Mossing
  */
 
-#include "L22Header.h"
+#include "moving_average.h"
 
 /*
  * inputs: array of samples and how many samples there are
@@ -14,9 +14,11 @@
 int getAverage(int array[], int numberOfSamples){
 	int sum = 0;
 	int x;
+
 	for(x = 0; x < numberOfSamples; x++){
 			sum += array[x];
-		}
+    }
+
 	int average = sum / numberOfSamples;
 
 	return average;
@@ -29,9 +31,11 @@ int getAverage(int array[], int numberOfSamples){
  */
 void addSample(int sample, int array[], int numberOfSamples){
 	int y;
+
 	for(y=0; y < numberOfSamples-1; y++){
 		array[y] = array[y+1];
 	}
+
 	array[numberOfSamples-1] = sample;
 }
 
@@ -41,11 +45,12 @@ void addSample(int sample, int array[], int numberOfSamples){
 int maximum(int* allNumbers, int maximum, int size){
 	int i;
 	for(i = 0; i < size; i++){
-	if(*allNumbers > maximum){
-		maximum = *allNumbers;
+        if(*allNumbers > maximum){
+            maximum = *allNumbers;
+        }
+        allNumbers++;
 	}
-	allNumbers++;
-	}
+
 	return maximum;
 }
 
@@ -55,11 +60,14 @@ int maximum(int* allNumbers, int maximum, int size){
 int minimum(int* allNumbers, int minimum, int size){
 	int i;
 	for(i = 0; i < size; i++){
-	if(*allNumbers < minimum){
-		minimum = *allNumbers;
+
+        if(*allNumbers < minimum){
+            minimum = *allNumbers;
+        }
+
+        allNumbers++;
 	}
-	allNumbers++;
-	}
+
 	return minimum;
 }
 /*
